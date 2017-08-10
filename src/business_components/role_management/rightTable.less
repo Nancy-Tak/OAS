@@ -1,0 +1,28 @@
+@rowHeight:30px;
+@borderColor:#d9d9d9;
+.rowWhile(@num) when (@num < 21){
+	.row@{num}{
+		height:@rowHeight * @num;
+		line-height: @rowHeight * @num;
+	}
+	.rowWhile((@num + 1));
+}
+.rc-box{
+	margin-top: 20px;
+	&:first-child{margin-top: none;}
+	height:100%;
+	border-top:1px solid @borderColor;
+	border-right:1px solid @borderColor;
+	.col{
+		height:100%;
+		border-left:1px solid @borderColor;
+		.row{
+			padding-left: 5px;
+			border-bottom:1px solid @borderColor;
+			.col:first-child{
+				border-left:none;
+			}
+		}
+		.rowWhile(1);
+	}
+}
